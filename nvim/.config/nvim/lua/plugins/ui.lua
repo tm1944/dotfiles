@@ -1,14 +1,47 @@
 return {
   {
-    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
-    opts = { style = "moon" },
+    opts = {
+      flavour = "latte",
+      background = { light = "latte", dark = "latte" },
+      transparent_background = false,
+      term_colors = true,
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        mason = true,
+        neotest = true,
+        neotree = true,
+        telescope = true,
+        treesitter = true,
+        which_key = true,
+        dap = true,
+        dap_ui = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+      },
+      custom_highlights = function(colors)
+        return {
+          LineNr = { fg = colors.pink, bold = true },
+          CursorLineNr = { fg = colors.maroon, bold = true },
+          Visual = { bg = colors.pink, fg = colors.base },
+        }
+      end,
+    },
     config = function(_, opts)
-      require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-moon")
-      vim.api.nvim_set_hl(0, "LineNr", { fg = "#e0af68", bold = true })
-      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffcb6b", bold = true })
+      require("catppuccin").setup(opts)
+      vim.o.background = "light"
+      vim.cmd.colorscheme("catppuccin-latte")
     end,
   },
   {
@@ -17,7 +50,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = "tokyonight",
+        theme = "catppuccin",
         globalstatus = true,
         component_separators = "|",
         section_separators = "",
@@ -31,7 +64,7 @@ return {
   {
     "sphamba/smear-cursor.nvim",
     opts = {
-      cursor_color = "#ffcb6b",
+      cursor_color = "#ea76cb",
       smear_between_buffers = true,
       smear_between_neighbor_lines = true,
       scroll_buffer_space = true,
