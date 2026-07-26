@@ -1,0 +1,5 @@
+# Ghostty settings managed by ~/dotfiles
+macos-option-as-alt = left
+
+# Shared light/dark theme written by the `theme` command.
+config-file = ?theme.conf

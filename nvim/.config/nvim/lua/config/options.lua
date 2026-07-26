@@ -28,3 +28,8 @@ opt.expandtab = false
 opt.smartindent = true
 
 vim.g.have_nerd_font = true
+
+-- Allow `theme` CLI to update running Neovim instances.
+if vim.fn.serverstart() == "" then
+  vim.notify("Could not start Neovim server socket", vim.log.levels.WARN)
+end

@@ -4,44 +4,9 @@ return {
     name = "catppuccin",
     lazy = false,
     priority = 1000,
-    opts = {
-      flavour = "latte",
-      background = { light = "latte", dark = "latte" },
-      transparent_background = false,
-      term_colors = true,
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        mason = true,
-        neotest = true,
-        neotree = true,
-        telescope = true,
-        treesitter = true,
-        which_key = true,
-        dap = true,
-        dap_ui = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-      },
-      custom_highlights = function(colors)
-        return {
-          LineNr = { fg = colors.pink, bold = true },
-          CursorLineNr = { fg = colors.maroon, bold = true },
-          Visual = { bg = colors.pink, fg = colors.base },
-        }
-      end,
-    },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.o.background = "light"
-      vim.cmd.colorscheme("catppuccin-latte")
+    config = function()
+      require("config.theme").apply()
+      require("config.theme").watch()
     end,
   },
   {
@@ -50,7 +15,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = "catppuccin",
+        theme = "catppuccin-latte",
         globalstatus = true,
         component_separators = "|",
         section_separators = "",

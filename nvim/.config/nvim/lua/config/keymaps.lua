@@ -4,6 +4,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "Save file" })
 map("n", "<leader>q", "<cmd>confirm quit<CR>", { desc = "Quit window" })
 map("n", "<leader>e", "<cmd>Neotree toggle left<CR>", { desc = "Toggle file explorer" })
+map("n", "<leader>ut", function() require("config.theme").toggle() end, { desc = "Toggle light/dark theme" })
 
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })

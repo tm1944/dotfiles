@@ -20,6 +20,7 @@ paths and compiler flags.
 | `Space xx` | Workspace diagnostics |
 | `Ctrl-Space` | Open completion menu |
 | `Space uc` | Toggle animated cursor |
+| `Space ut` | Toggle light/dark theme |
 
 Completion uses `Tab` and `Shift-Tab` to move through candidates and snippet
 fields, and `Enter` to accept.

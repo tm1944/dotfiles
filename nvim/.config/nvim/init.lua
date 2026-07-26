@@ -22,7 +22,7 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  install = { colorscheme = { "catppuccin-latte", "habamax" } },
+  install = { colorscheme = { "catppuccin-latte", "catppuccin-mocha", "habamax" } },
   checker = { enabled = true, notify = false },
   change_detection = { notify = false },
   rocks = { enabled = false },

@@ -35,10 +35,29 @@ After cloning, open the repository in your agent and ask:
 The actual setup remains deterministic; the agent should run and verify
 `./install.sh` rather than recreating the configuration from scratch.
 
+## Theme
+
+Neovim, tmux, and Ghostty share one Catppuccin theme mode stored in
+`~/.config/theme-mode`:
+
+```bash
+theme          # toggle light <-> dark
+theme light    # Catppuccin Latte
+theme dark     # Catppuccin Mocha
+theme status   # print current mode
+```
+
+Inside Neovim use `Space u t`. Inside tmux use `Ctrl-a` then `T`.
+
+Ghostty theme colors live in `~/.config/ghostty/theme.conf` (generated).
+`theme` reloads Ghostty by sending `SIGUSR2` to the running app.
+
 ## What is managed
 
 - `nvim/.config/nvim`: Neovim configuration and pinned plugin lockfile
 - `tmux/.tmux.conf`: tmux configuration and TPM plugins
+- `ghostty/.config/ghostty`: Ghostty terminal settings
+- `bin/.local/bin/theme`: shared light/dark theme switcher
 - `Brewfile`: command-line dependencies
 - `install.sh`: repeatable bootstrap and health checks
 

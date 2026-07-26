@@ -49,12 +49,21 @@ backup_conflict() {
   fi
 }
 
-mkdir -p "$HOME/.config" "$HOME/.tmux/plugins"
+mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.tmux/plugins"
 backup_conflict "$HOME/.config/nvim" "$DOTFILES_DIR/nvim/.config/nvim"
 backup_conflict "$HOME/.tmux.conf" "$DOTFILES_DIR/tmux/.tmux.conf"
+backup_conflict "$HOME/.local/bin/theme" "$DOTFILES_DIR/bin/.local/bin/theme"
+backup_conflict "$HOME/.config/ghostty" "$DOTFILES_DIR/ghostty/.config/ghostty"
+
+if [[ ! -f "$HOME/.config/theme-mode" ]]; then
+  printf 'light\n' >"$HOME/.config/theme-mode"
+fi
 
 echo "Linking configuration..."
-stow --dir="$DOTFILES_DIR" --target="$HOME" --restow nvim tmux
+stow --dir="$DOTFILES_DIR" --target="$HOME" --restow --no-folding nvim tmux bin ghostty
+
+# Seed Ghostty theme include for the current mode.
+"$DOTFILES_DIR/bin/.local/bin/theme" "$(tr -d '[:space:]' <"$HOME/.config/theme-mode" 2>/dev/null || echo light)" >/dev/null || true
 
 if [[ ! -d "$HOME/.tmux/plugins/tpm/.git" ]]; then
   git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
